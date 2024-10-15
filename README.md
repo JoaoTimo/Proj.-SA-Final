@@ -11,31 +11,35 @@ senha_login varchar(15)
 
 -- Administrador
 CREATE TABLE Administrador (
-administrador_id INT PRIMARY KEY AUTO_INCREMENT, 
-nome VARCHAR(100) NOT NULL, email VARCHAR(100) NOT NULL UNIQUE, 
-senha_hash VARCHAR(255) NOT NULL, is_ativo BOOLEAN DEFAULT TRUE,
+id_adm INT PRIMARY KEY AUTO_INCREMENT, 
+nome_adm VARCHAR(100) NOT NULL, email VARCHAR(100) NOT NULL UNIQUE, 
+senha_adm VARCHAR(100) NOT NULL,
+email_adm VARCHAR(100) NOT NULL,
+is_ativo BOOLEAN DEFAULT TRUE,
 criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Desenvolvedor
-CREATE TABLE Desenvolvedor ( desenvolvedor_id INT PRIMARY KEY AUTO_INCREMENT, 
-nome VARCHAR(100) NOT NULL, 
-email VARCHAR(100) NOT NULL UNIQUE, 
-senha_hash VARCHAR(255) NOT NULL, is_ativo BOOLEAN DEFAULT TRUE,
+CREATE TABLE Desenvolvedor (
+id_dev INT PRIMARY KEY AUTO_INCREMENT, 
+nome_dev VARCHAR(100) NOT NULL, 
+email_dev VARCHAR(100) NOT NULL UNIQUE, 
+senha_dev VARCHAR(100) NOT NULL, is_ativo BOOLEAN DEFAULT TRUE,
 criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
  );
 
  -- Tabela usuário
 CREATE TABLE Users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(50) NOT NULL UNIQUE, 
-    email VARCHAR(100) NOT NULL UNIQUE, 
-    pass VARCHAR(255) NOT NULL,
+    nome_usu VARCHAR(50) NOT NULL UNIQUE, 
+    email_usu VARCHAR(100) NOT NULL UNIQUE, 
+    pass_usu VARCHAR(100) NOT NULL,
     status ENUM('Admin', 'Dev', 'Usuario') DEFAULT 'Usuario',
     is_active INT, -- Usuário ativo ou bloqueado 
+    tentativas int,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
- */
+ 
 CREATE TABLE Tasks (
     id_tasks INT PRIMARY KEY AUTO_INCREMENT,
     name_tasks VARCHAR(100) NOT NULL,
@@ -45,7 +49,7 @@ CREATE TABLE Tasks (
     FOREIGN KEY (qm_criou) REFERENCES Users(user_id),
     data_cria DATETIME DEFAULT CURRENT_TIMESTAMP
 );
-
+*/
 /*
 -- Permissão 
 create TABLE Permissions (
@@ -94,8 +98,8 @@ TaskTypes definem diferentes categorias de tarefas.
 Tasks armazena as tarefas com informações de tipo e criador.
 UserTasks associa usuários às tarefas.
 BlockedUsers armazena informações de usuários que foram bloqueados.
-*/
 
-INSERT INTO Desenvolvedor (nome, email, senha_hash) VALUES ('João Silva', 'joao.silva@example.com', 'hashed_password');
 
-INSERT INTO Administrador (nome, email, senha_hash) VALUES ('Maria Souza', 'maria.souza@example.com', 'hashed_password');
+INSERT INTO Desenvolvedor (nome_dev, email_dev, senha_dev) VALUES ('João Silva', 'joao.silva@example.com', 'hashed_password');
+
+INSERT INTO Administrador (nome_adm, email_adm, senha_adm) VALUES ('Maria Souza', 'maria.souza@example.com', 'hashed_password');
