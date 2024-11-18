@@ -30,23 +30,24 @@ CREATE TABLE Desenvolvedores (
 
 -- Criar Tarefas
 CREATE TABLE Tarefa (
-    id_task INT PRIMARY KEY AUTO_INCREMENT,
+    id_task INT PRIMARY KEY,
     name_tasks VARCHAR(100) NOT NULL, 
     descricao_task TEXT NOT NULL,
     dev_id INT,
-    task_type_nome VARCHAR(50), 
+    task_type_id INT, 
     data_cria DATETIME DEFAULT CURRENT_TIMESTAMP  NOT NULL,
     status ENUM('pendente', 'em andamento', 'concluída') DEFAULT 'pendente',
     FOREIGN KEY (dev_id) REFERENCES Desenvolvedores (id_dev),
-    FOREIGN KEY (task_type_nome) REFERENCES TiposTarefas (nome_type_task)
+    FOREIGN KEY (task_type_id) REFERENCES TiposTarefas (id_type_task)
 );
 */
 /*
 insert into Usuarios (nome_usu, email_usu, senha_usu, status_usu, status_ativo) values ("Timass", "timass@gmail.com", 123, "admin", "ativo");
 insert into Desenvolvedores (nome_dev, email_dev) values ("Ximass", "ximass@gmail.com");
 insert into tipostarefas (nome_type_task) values ("Adicionar");
-insert into Tarefa (name_tasks, descricao_task, data_cria, status) values ("Add", "Adicionar uma tarefa", 2024-11-15, "concluída");
+insert into Tarefa (name_tasks, descricao_task, data_cria, status) values ("Add", "Adicionar uma tarefa", '2024-11-18 15:30:00', "concluída");
  */
+
  select * from Desenvolvedores;
  select * from Usuarios;
  select * from tarefa;
